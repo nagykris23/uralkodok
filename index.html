@@ -65,32 +65,29 @@
     </table>
 
     <h2>Uralkodó Hozzáadása</h2>
-
-    <form id="form" action="#">
-        <label for="uralkodo_nev">Uralkodó neve:</label><br>
-        <input type="text" id="uralkodo_nev" name="uralkodo_nev"><br><br>
-        <div id="uralkodo_error" class="error"> </div>
-
-
-        <label for="esemeny1">Első esemény:</label><br>
-        <input type="text" id="esemeny1" name="esemeny1"><br><br>
-        <div id="esemeny1_error" class="error"></div>
-
-        <label for="evszam1">Első esemény évszáma:</label><br>
-        <input type="text" id="evszam1" name="evszam1"><br><br>
-        <div id="evszam1_error" class="error"></div>
-
-        <label for="esemeny2">Második esemény:</label><br>
-        <input type="text" id="esemeny2" name="esemeny2"><br><br>
-        <div id="esemeny2_error" class="error"></div>
-
-        <label for="evszam2">Második esemény évszáma:</label><br>
-        <input type="text" id="evszam2" name="evszam2"><br><br>
-        <div id="evszam2_error" class="error"></div>
-
-        <button>Hozzáadás</button>
+    <form id="form">
+        <label for="uralkodo_nev">Uralkodó neve:</label>
+        <input type="text" id="uralkodo_nev" name="uralkodo_nev">
+        <span class="error" id="uralkodo_error"></span><br><br>
+    
+        <label for="esemeny1">Első esemény:</label>
+        <input type="text" id="esemeny1" name="esemeny1">
+        <span class="error" id="esemeny1_error"></span><br><br>
+    
+        <label for="evszam1">Első esemény évszáma:</label>
+        <input type="text" id="evszam1" name="evszam1">
+        <span class="error" id="evszam1_error"></span><br><br>
+    
+        <label for="esemeny2">Második esemény:</label>
+        <input type="text" id="esemeny2" name="esemeny2">
+        <span class="error" id="esemeny2_error"></span><br><br>
+    
+        <label for="evszam2">Második esemény évszáma:</label>
+        <input type="text" id="evszam2" name="evszam2">
+        <span class="error" id="evszam2_error"></span><br><br>
+    
+        <button type="submit">Hozzáadás</button>
     </form>
-
 </body>
 <script src="main.js"></script>
 </html>

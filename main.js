@@ -56,7 +56,7 @@ const col2 = document.createElement('col')//létrehozok egy col elemet
 colgroup.appendChild(col2)//a col elemet hozzáadom a colgroup-hoz  
 
 const col3 = document.createElement('col')//létrehozok egy col elemet  
-colgroup.appendChild(col3)//a col elemet hozzáadom a colgroup-ho
+colgroup.appendChild(col3)//a col elemet hozzáadom a colgroup-hoz
 col3.classList.add('fontos')//a col3-hoz hozzáadok egy class-t
 
 //fejléc létrehozása
@@ -114,67 +114,53 @@ rendermenu()//függvény meghívása
 
 document.getElementById('form').addEventListener('submit', function (e) {
     e.preventDefault()//megakadályozza az alapértelmezett eseményt
-    const uralkodo = document.getElementById('uralkodo_nev').value//lekéri az uralkodo mező értékét
-    const esemeny = document.getElementById('esemeny1').value//lekéri az esemeny mező értékét
-    const evszam = document.getElementById('evszam1').value//lekéri az evszam mező értékét
-    const esemeny2 = document.getElementById('esemeny2').value//lekéri az esemeny2 mező értékét
-    const evszam2 = document.getElementById('evszam2').value//lekéri az evszam2 mező értékét
+    const uralkodo = document.getElementById('uralkodo_nev')//lekéri az uralkodo mező értékét
+    const esemeny = document.getElementById('esemeny1')//lekéri az esemeny mező értékét
+    const evszam = document.getElementById('evszam1')//lekéri az evszam mező értékét
+    const esemeny2 = document.getElementById('esemeny2')//lekéri az esemeny2 mező értékét
+    const evszam2 = document.getElementById('evszam2')//lekéri az evszam2 mező értékét
 
     let isvalid = true//isvalid változó létrehozása
-    if (!uralkodo) {
-        document.getElementById('uralkodo_error').innerHTML = 'Kötelező megadni az uralkodo nevet'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
+    if (!validatform(uralkodo, "kötelező megadni az uralkodót", 'uralkodo_error')) {//ha a validatform függvény értéke hamis, akkor
         isvalid = false//isvalid változó értékét hamisra állítja
-    } else {
-        document.getElementById('uralkodo_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
     }
-    if (!esemeny) {
-        document.getElementById('esemeny1_error').innerHTML = 'Kötelező megadni az elso eseményt'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
+    if (!validatform(esemeny, "kötelező megadni az eseményt", 'esemeny1_error')) {//ha a validatform függvény értéke hamis, akkor
         isvalid = false//isvalid változó értékét hamisra állítja
-    } else {
-        document.getElementById('esemeny1_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
     }
-    if (!evszam) {
-        document.getElementById('evszam1_error').innerHTML = 'Kötelező megadni az évszámot'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
+    if (!validatform(evszam, "kötelező megadni az évszámot", 'evszam1_error')) {//ha a validatform függvény értéke hamis, akkor
         isvalid = false//isvalid változó értékét hamisra állítja
-    } else {
-        document.getElementById('evszam1_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
     }
-    if (!esemeny2) {
-        document.getElementById('esemeny2_error').innerHTML = 'Kötelező megadni a második eseményt'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
-        isvalid = false//isvalid változó értékét hamisra állítja
-    } else {
-        document.getElementById('esemeny2_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
-    }
-    if ((!evszam2 && esemeny2) || (!esemeny2 && evszam2)) {
-        if (!evszam2) {
-            document.getElementById('evszam2_error').innerHTML = 'Kötelező megadni az évszámot'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
-            isvalid = false//isvalid változó értékét hamisra állítja
-        } else {
-            document.getElementById('evszam2_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
+    if ((esemeny2 && !evszam2) || (!esemeny2 && evszam2)) {//ha az esemeny2 mezőben van érték, de az evszam2 mezőben nincs, vagy az esemeny2 mezőben nincs érték, de az evszam2 mezőben van, akkor
+        if (!esemeny2) {//ha az esemeny2 mezőben nincs érték, akkor
+            document.getElementById('esemeny2_error').innerHTML = 'Kötelező megadni az eseményt'//kiírja a hibaüzenetet
         }
-        if (!esemeny2) {
-            document.getElementById('esemeny2_error').innerHTML = 'Kötelező megadni az eseményt'//ha nincs érték a mezőben, akkor kiírja a hibaüzenetet
-            isvalid = false//isvalid változó értékét hamisra állítja
-        } else {
-            document.getElementById('esemeny2_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
+        if (!evszam2) {//ha az evszam2 mezőben nincs érték, akkor
+            document.getElementById('evszam2_error').innerHTML = 'Kötelező megadni az évszámot'//kiírja a hibaüzenetet
         }
         isvalid = false//isvalid változó értékét hamisra állítja
-    } else {
-        document.getElementById('evszam2_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
-        document.getElementById('esemeny2_error').innerHTML = ''//ha van érték a mezőben, akkor törli a hibaüzenetet
-    }
-    if (!isvalid) {
-        return//ha az isvalid változó értéke hamis, akkor kilép a függvényből
     }
 
-    const ujuralkodo = {
-        uralkodo: uralkodo,//uralkodo változó létrehozása
-        esemeny: esemeny,//esemeny változó létrehozása
-        evszam: evszam,//evszam változó létrehozása
-        esemeny2: esemeny2,//esemeny2 változó létrehozása
-        evszam2: evszam2//evszam2 változó létrehozása
+    if (isvalid) {//ha az isvalid változó értéke igaz, akkor
+        const ujuralkodo = {
+            uralkodo: uralkodo.value,//uralkodo változó létrehozása
+            esemeny: esemeny.value,//esemeny változó létrehozása
+            evszam: evszam.value,//evszam változó létrehozása
+            esemeny2: esemeny2.value,//esemeny2 változó létrehozása
+            evszam2: evszam2.value//evszam2 változó létrehozása
+        }
+        array.push(ujuralkodo)//ujuralkodo hozzáadása az array-hez
+        tbody.innerHTML = ''//a tbody-t ürítem
+        rendermenu()//függvény meghívása
     }
-    array.push(ujuralkodo)//ujuralkodo hozzáadása az array-hez
-    tbody.innerHTML = ''//a tbody-t ürítem
-    rendermenu()//függvény meghívása
 })
+
+function validatform(inputHtmlElement, errorMessage, errorElementId) {//validalo fuggveny
+    let valid = true//kezdetben igaz
+    if (inputHtmlElement.value === '') {//ha ures
+        document.getElementById(errorElementId).innerHTML = errorMessage//hibauzenet
+        valid = false//ha hibas, hamis
+    } else {
+        document.getElementById(errorElementId).innerHTML = ''//törli a hibauzenetet
+    }
+    return valid//visszaadjuk az erteket
+}
