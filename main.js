@@ -79,7 +79,7 @@ function createHeaderRow() {
 
 createHeader()//függvény meghívása
 
-function rendermenu() {
+function rendermenu() { //táblázat létrehozása függvénybe
     //táblázat létrehozása ciklussal
     for (const adat of array) {
         const tr = document.createElement('tr')//létrehozok egy tr elemet
