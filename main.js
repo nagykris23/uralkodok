@@ -153,7 +153,7 @@ document.getElementById('form').addEventListener('submit', function (e) {
         rendermenu()//függvény meghívása
     }
 })
-
+//összetett vaLidáló függvény
 function validatform(inputHtmlElement, errorMessage, errorElementId) {//validalo fuggveny
     let valid = true//kezdetben igaz
     if (inputHtmlElement.value === '') {//ha ures
