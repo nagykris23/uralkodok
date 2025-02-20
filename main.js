@@ -79,7 +79,7 @@ function createHeaderRow() {
 
 createHeader()//függvény meghívása
 
-function rendermenu() { //táblázat létrehozása függvénybe
+function rendermenu() {
     //táblázat létrehozása ciklussal
     for (const adat of array) {
         const tr = document.createElement('tr')//létrehozok egy tr elemet
@@ -116,47 +116,52 @@ function rendermenu() { //táblázat létrehozása függvénybe
 }
 rendermenu()//függvény meghívása
 
-document.getElementById('form').addEventListener('submit', function (e) {
-    e.preventDefault()//megakadályozza az alapértelmezett eseményt
-    const uralkodo = document.getElementById('uralkodo_nev')//lekéri az uralkodo mező értékét
-    const esemeny1 = document.getElementById('esemeny1')//lekéri az esemeny1 mező értékét
-    const evszam1 = document.getElementById('evszam1')//lekéri az evszam1 mező értékét
-    const esemeny2 = document.getElementById('esemeny2')//lekéri az esemeny2 mező értékét
-    const evszam2 = document.getElementById('evszam2')//lekéri az evszam2 mező értékét
+function generateForm() {
+    document.getElementById('form').addEventListener('submit', function (e) {
+        e.preventDefault()//megakadályozza az alapértelmezett eseményt
+        const uralkodo = document.getElementById('uralkodo_nev')//lekéri az uralkodo mező értékét
+        const esemeny1 = document.getElementById('esemeny1')//lekéri az esemeny1 mező értékét
+        const evszam1 = document.getElementById('evszam1')//lekéri az evszam1 mező értékét
+        const esemeny2 = document.getElementById('esemeny2')//lekéri az esemeny2 mező értékét
+        const evszam2 = document.getElementById('evszam2')//lekéri az evszam2 mező értékét
 
-    let isvalid = true//isvalid változó létrehozása
-    if (!validatform(uralkodo, "kötelező megadni az uralkodót", 'uralkodo_error')) {//ha a validatform függvény értéke hamis, akkor
-        isvalid = false//isvalid változó értékét hamisra állítja
-    }
-    if (!validatform(esemeny1, "kötelező megadni az eseményt", 'esemeny1_error')) {//ha a validatform függvény értéke hamis, akkor
-        isvalid = false//isvalid változó értékét hamisra állítja
-    }
-    if (!validatform(evszam1, "kötelező megadni az évszámot", 'evszam1_error')) {//ha a validatform függvény értéke hamis, akkor
-        isvalid = false//isvalid változó értékét hamisra állítja
-    }
-    if ((esemeny2.value && !evszam2.value) || (!esemeny2.value && evszam2.value)) {//ha az esemeny2 mezőben van érték, de az evszam2 mezőben nincs, vagy az esemeny2 mezőben nincs érték, de az evszam2 mezőben van, akkor
-        if (!esemeny2.value) {//ha az esemeny2 mezőben nincs érték, akkor
-            document.getElementById('esemeny2_error').innerHTML = 'Kötelező megadni az eseményt'//kiírja a hibaüzenetet
+        let isvalid = true//isvalid változó létrehozása
+        if (!validatform(uralkodo, "kötelező megadni az uralkodót", 'uralkodo_error')) {//ha a validatform függvény értéke hamis, akkor
+            isvalid = false//isvalid változó értékét hamisra állítja
         }
-        if (!evszam2.value) {//ha az evszam2 mezőben nincs érték, akkor
-            document.getElementById('evszam2_error').innerHTML = 'Kötelező megadni az évszámot'//kiírja a hibaüzenetet
+        if (!validatform(esemeny1, "kötelező megadni az eseményt", 'esemeny1_error')) {//ha a validatform függvény értéke hamis, akkor
+            isvalid = false//isvalid változó értékét hamisra állítja
         }
-        isvalid = false//isvalid változó értékét hamisra állítja
-    }
+        if (!validatform(evszam1, "kötelező megadni az évszámot", 'evszam1_error')) {//ha a validatform függvény értéke hamis, akkor
+            isvalid = false//isvalid változó értékét hamisra állítja
+        }
+        if ((esemeny2.value && !evszam2.value) || (!esemeny2.value && evszam2.value)) {//ha az esemeny2 mezőben van érték, de az evszam2 mezőben nincs, vagy az esemeny2 mezőben nincs érték, de az evszam2 mezőben van, akkor
+            if (!esemeny2.value) {//ha az esemeny2 mezőben nincs érték, akkor
+                document.getElementById('esemeny2_error').innerHTML = 'Kötelező megadni az eseményt'//kiírja a hibaüzenetet
+            }
+            if (!evszam2.value) {//ha az evszam2 mezőben nincs érték, akkor
+                document.getElementById('evszam2_error').innerHTML = 'Kötelező megadni az évszámot'//kiírja a hibaüzenetet
+            }
+            isvalid = false//isvalid változó értékét hamisra állítja
+        }
 
-    if (isvalid) {//ha az isvalid változó értéke igaz, akkor
-        const ujuralkodo = {
-            uralkodo: uralkodo.value,//uralkodo változó létrehozása
-            esemeny1: esemeny1.value,//esemeny1 változó létrehozása
-            evszam1: evszam1.value,//evszam1 változó létrehozása
-            esemeny2: esemeny2.value,//esemeny2 változó létrehozása
-            evszam2: evszam2.value//evszam2 változó létrehozása
+        if (isvalid) {//ha az isvalid változó értéke igaz, akkor
+            const ujuralkodo = {
+                uralkodo: uralkodo.value,//uralkodo változó létrehozása
+                esemeny1: esemeny1.value,//esemeny1 változó létrehozása
+                evszam1: evszam1.value,//evszam1 változó létrehozása
+                esemeny2: esemeny2.value,//esemeny2 változó létrehozása
+                evszam2: evszam2.value//evszam2 változó létrehozása
+            }
+            array.push(ujuralkodo)//ujuralkodo hozzáadása az array-hez
+            tbody.innerHTML = ''//a tbody-t ürítem
+            rendermenu()//függvény meghívása
         }
-        array.push(ujuralkodo)//ujuralkodo hozzáadása az array-hez
-        tbody.innerHTML = ''//a tbody-t ürítem
-        rendermenu()//függvény meghívása
-    }
-})
+    })
+}
+
+generateForm()//form generálás függvény meghívása
+
 //összetett validálás függvénye
 function validatform(inputHtmlElement, errorMessage, errorElementId) {//validalo fuggveny
     let valid = true//kezdetben igaz
