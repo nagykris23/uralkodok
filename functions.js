@@ -23,22 +23,25 @@ function createHeader() {
  * Fejléc létrehozása
  */
 function createHeaderRow() {
+    const thead = document.querySelector('thead');//létrehozok egy tr elemet
     const tr = document.createElement('tr');//létrehozok egy tr elemet
     thead.appendChild(tr);//a tr elemet hozzáadom a thead-hoz
-
+ 
     const headers = [fejlec.uralkodo, fejlec.esemeny, fejlec.evszam];//fejléc adatok tömbje
-
+ 
     for (let i = 0; i < headers.length; i++) {
         const th = document.createElement('th');//létrehozok egy th elemet
         tr.appendChild(th);//a th elemet hozzáadom a tr-hoz
         th.innerHTML = headers[i];//a th-nek beállítom a szövegét
     }
 }
+
 /**
  * Táblázat létrehozása ciklussal
  */
 function rendermenu() {
     for (let i = 0; i < array.length; i++) {
+        const tbody = document.querySelector('tbody');//létrehozok egy tbody elemet
         const adat = array[i];
         const tr = document.createElement('tr');//létrehozok egy tr elemet
         tbody.appendChild(tr);//a tr elemet hozzáadom a tbody-hoz
@@ -74,12 +77,36 @@ function rendermenu() {
 }
 
 /**
+ * Form létrehozása
+ */
+function createform() {//függvény létrehozása
+    //form letrehozasa
+    const form = document.createElement('form');//form elem letrehozasa
+    form.id = 'form';//form id beallitasa
+    form.action = '#';//form action beallitasa
+
+    //form elemeinek letrehozasa
+    createFormField(form,'Uralkodó neve:', 'uralkodo_nev', 'uralkodo_nev');//uralkodo neve mezot letrehozza
+    createFormField(form,'Első esemény:', 'esemeny1', 'esemeny1');//elso esemeny mezot letrehozza
+    createFormField(form,'Első esemény évszáma:', 'evszam1', 'evszam1');//elso evszam mezot letrehozza
+    createFormField(form,'Második esemény:', 'esemeny2', 'esemeny2');//masodik esemeny mezot letrehozza
+    createFormField(form,'Második esemény évszáma:', 'evszam2', 'evszam2');//masodik evszam mezot letrehozza
+
+    const button = document.createElement('button');//gomb letrehozasa
+    button.type = 'submit';//gomb típusának beállítása
+    button.innerHTML = 'Hozzáadás';//gomb szoveg beallitasa
+    form.appendChild(button);//gomb hozzaadasa a formhoz
+
+    document.body.appendChild(form);//form hozzaadasa a body-hoz
+}
+
+/**
  * Mezők létrehozása
  * @param {string} labelText - A mező címkéje
  * @param {string} inputId - A mező azonosítója
  * @param {string} inputName - A mező neve
  */
-function createFormField(labelText, inputId, inputName) {
+function createFormField(form, labelText, inputId, inputName) {
     const label = document.createElement('label');//label letrehozasa
     label.htmlFor = inputId;//label for attributum beallitasa
     label.innerHTML = labelText;//label szoveg beallitasa
@@ -100,7 +127,7 @@ function createFormField(labelText, inputId, inputName) {
     form.appendChild(errorSpan);//hibauzenet hely hozzaadasa
     form.appendChild(document.createElement('br'));//uj sor letrehozasa
 }
-//összetett validálás függvénye
+
 /**
  * Validálja a form mezőt és megjeleníti a hibaüzenetet, ha szükséges
  * @param {HTMLInputElement} inputHtmlElement - A form mező HTML eleme

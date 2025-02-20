@@ -46,29 +46,9 @@ table.appendChild(thead);//a thead elemet hozzáadom a table-hoz
 
 
 createHeader();//függvény meghívása
-
-
 rendermenu();//függvény meghívása
+createform();//függvény meghívása   
 
-//form letrehozasa
-const form = document.createElement('form');//form elem letrehozasa
-form.id = 'form';//form id beallitasa
-form.action = '#';//form action beallitasa
-
-
-//form elemeinek letrehozasa
-createFormField('Uralkodó neve:', 'uralkodo_nev', 'uralkodo_nev');//uralkodo neve mezot letrehozza
-createFormField('Első esemény:', 'esemeny1', 'esemeny1');//elso esemeny mezot letrehozza
-createFormField('Első esemény évszáma:', 'evszam1', 'evszam1');//elso evszam mezot letrehozza
-createFormField('Második esemény:', 'esemeny2', 'esemeny2');//masodik esemeny mezot letrehozza
-createFormField('Második esemény évszáma:', 'evszam2', 'evszam2');//masodik evszam mezot letrehozza
-
-const button = document.createElement('button');//gomb letrehozasa
-button.type = 'submit';//gomb típusának beállítása
-button.innerHTML = 'Hozzáadás';//gomb szoveg beallitasa
-form.appendChild(button);//gomb hozzaadasa a formhoz
-
-document.body.appendChild(form);//form hozzaadasa a body-hoz
 
 document.getElementById('form').addEventListener('submit', function (e) {
     e.preventDefault();//megakadályozza az alapértelmezett eseményt
@@ -112,4 +92,3 @@ document.getElementById('form').addEventListener('submit', function (e) {
         form.reset();//form resetelése
     }
 });
-
