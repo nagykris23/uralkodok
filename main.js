@@ -45,35 +45,39 @@ const thead = document.createElement('thead')//létrehozok egy thead elemet
 table.appendChild(thead)//a thead elemet hozzáadom a table-hoz
 
 //colgroup létrehozása
-const colgroup = document.createElement('colgroup')//létrehozok egy colgroup elemet
-table.appendChild(colgroup)//a colgroup elemet hozzáadom a table-hoz
+function createHeader() {
+    const colgroup = document.createElement('colgroup')//létrehozok egy colgroup elemet
+    table.appendChild(colgroup)//a colgroup elemet hozzáadom a table-hoz
 
-const col1 = document.createElement('col')//létrehozok egy col elemet
-colgroup.appendChild(col1)//a col elemet hozzáadom a colgroup-hoz
-col1.classList.add('fontos')//a col1-hez hozzáadok egy class-t
+    const col1 = document.createElement('col')//létrehozok egy col elemet
+    colgroup.appendChild(col1)//a col elemet hozzáadom a colgroup-hoz
+    col1.classList.add('fontos')//a col1-hez hozzáadok egy class-t
 
-const col2 = document.createElement('col')//létrehozok egy col elemet
-colgroup.appendChild(col2)//a col elemet hozzáadom a colgroup-hoz  
+    const col2 = document.createElement('col')//létrehozok egy col elemet
+    colgroup.appendChild(col2)//a col elemet hozzáadom a colgroup-hoz  
 
-const col3 = document.createElement('col')//létrehozok egy col elemet  
-colgroup.appendChild(col3)//a col elemet hozzáadom a colgroup-hoz
-col3.classList.add('fontos')//a col3-hoz hozzáadok egy class-t
+    const col3 = document.createElement('col')//létrehozok egy col elemet  
+    colgroup.appendChild(col3)//a col elemet hozzáadom a colgroup-hoz
+    col3.classList.add('fontos')//a col3-hoz hozzáadok egy class-t
+
+    createHeaderRow()//fejléc sor létrehozása
+}
 
 //fejléc létrehozása
-const tr = document.createElement('tr')//létrehozok egy tr elemet
-thead.appendChild(tr)//a tr elemet hozzáadom a thead-hoz
+function createHeaderRow() {
+    const tr = document.createElement('tr')//létrehozok egy tr elemet
+    thead.appendChild(tr)//a tr elemet hozzáadom a thead-hoz
 
-const th1 = document.createElement('th')//létrehozok egy th elemet
-tr.appendChild(th1)//a th elemet hozzáadom a tr-hoz
-th1.innerHTML = fejlec.uralkodo//a th1-nek beállítom a szövegét
+    const headers = [fejlec.uralkodo, fejlec.esemeny, fejlec.evszam]//fejléc adatok tömbje
 
-const th2 = document.createElement('th')//létrehozok egy th elemet
-tr.appendChild(th2)//a th elemet hozzáadom a tr-hoz
-th2.innerHTML = fejlec.esemeny//a th2-nek beállítom a szövegét
+    headers.forEach(headerText => {
+        const th = document.createElement('th')//létrehozok egy th elemet
+        tr.appendChild(th)//a th elemet hozzáadom a tr-hoz
+        th.innerHTML = headerText//a th-nek beállítom a szövegét
+    })
+}
 
-const th3 = document.createElement('th')//létrehozok egy th elemet
-tr.appendChild(th3)//a th elemet hozzáadom a tr-hoz
-th3.innerHTML = fejlec.evszam//a th3-nek beállítom a szövegét
+createHeader()//függvény meghívása
 
 function rendermenu() {
     //táblázat létrehozása ciklussal
