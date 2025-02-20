@@ -92,7 +92,7 @@ for(const adat of array){
     const td3 = document.createElement('td')// létrehozok egy td elemet
     tr.appendChild(td3)// a td elemet hozzáadom a tr-hoz
     td3.innerHTML = adat.evszam// a td3-nek beállítom a szövegét
-
+//elágazás létrehozása
     if(adat.esemeny2 && adat.evszam2){
         td1.rowSpan = 2 // beállítom a rowspan-t
 
