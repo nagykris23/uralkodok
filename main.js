@@ -28,13 +28,13 @@ const array = [
     }
 ]
 //sorok létrehozása
-const fejlec = [//fejléc létrehozása
+const fejlec = 
     {
         uralkodo: "Uralkodó",// fejléc első változó létrehozása
         esemeny: "Esemény",//fejléc masodik változó létrehozása 
         evszam: "Évszám"//fejléc harmadik változó létrehozása
     }
-]
+
 
 const table = document.createElement('table')// létrehozok egy table elemet
 document.body.appendChild(table)// a table elemet hozzáadom a body-hoz
@@ -66,15 +66,15 @@ thead.appendChild(tr)// a tr elemet hozzáadom a thead-hoz
 
 const th1 = document.createElement('th')// létrehozok egy th elemet
 tr.appendChild(th1)// a th elemet hozzáadom a tr-hoz
-th1.innerHTML = fejlec[0].uralkodo // a th1-nek beállítom a szövegét
+th1.innerHTML = fejlec.uralkodo // a th1-nek beállítom a szövegét
 
 const th2 = document.createElement('th')// létrehozok egy th elemet
 tr.appendChild(th2)// a th elemet hozzáadom a tr-hoz
-th2.innerHTML = fejlec[0].esemeny// a th2-nek beállítom a szövegét
+th2.innerHTML = fejlec.esemeny// a th2-nek beállítom a szövegét
 
 const th3 = document.createElement('th')// létrehozok egy th elemet
 tr.appendChild(th3)// a th elemet hozzáadom a tr-hoz
-th3.innerHTML = fejlec[0].evszam// a th3-nek beállítom a szövegét
+th3.innerHTML = fejlec.evszam// a th3-nek beállítom a szövegét
 
 //táblázat létrehozása ciklussal 
 for(const adat of array){
