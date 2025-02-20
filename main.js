@@ -28,12 +28,12 @@ const array = [
     }
 ]
 //sorok létrehozása
-const fejlec = 
-    {
-        uralkodo: "Uralkodó",// fejléc első változó létrehozása
-        esemeny: "Esemény",//fejléc masodik változó létrehozása 
-        evszam: "Évszám"//fejléc harmadik változó létrehozása
-    }
+const fejlec =
+{
+    uralkodo: "Uralkodó",// fejléc első változó létrehozása
+    esemeny: "Esemény",//fejléc masodik változó létrehozása 
+    evszam: "Évszám"//fejléc harmadik változó létrehozása
+}
 
 
 const table = document.createElement('table')// létrehozok egy table elemet
@@ -76,36 +76,38 @@ const th3 = document.createElement('th')// létrehozok egy th elemet
 tr.appendChild(th3)// a th elemet hozzáadom a tr-hoz
 th3.innerHTML = fejlec.evszam// a th3-nek beállítom a szövegét
 
-//táblázat létrehozása ciklussal 
-for(const adat of array){
-    const tr = document.createElement('tr')// létrehozok egy tr elemet
-    tbody.appendChild(tr)// a tr elemet hozzáadom a tbody-hoz
+function rendermenu() {
+    //táblázat létrehozása ciklussal 
+    for (const adat of array) {
+        const tr = document.createElement('tr')// létrehozok egy tr elemet
+        tbody.appendChild(tr)// a tr elemet hozzáadom a tbody-hoz
 
-    const td1 = document.createElement('td')// létrehozok egy td elemet
-    tr.appendChild(td1)// a td elemet hozzáadom a tr-hoz
-    td1.innerHTML = adat.uralkodo// a td1-nek beállítom a szövegét
+        const td1 = document.createElement('td')// létrehozok egy td elemet
+        tr.appendChild(td1)// a td elemet hozzáadom a tr-hoz
+        td1.innerHTML = adat.uralkodo// a td1-nek beállítom a szövegét
 
-    const td2 = document.createElement('td')// létrehozok egy td elemet
-    tr.appendChild(td2)// a td elemet hozzáadom a tr-hoz
-    td2.innerHTML = adat.esemeny// a td2-nek beállítom a szövegét
+        const td2 = document.createElement('td')// létrehozok egy td elemet
+        tr.appendChild(td2)// a td elemet hozzáadom a tr-hoz
+        td2.innerHTML = adat.esemeny// a td2-nek beállítom a szövegét
 
-    const td3 = document.createElement('td')// létrehozok egy td elemet
-    tr.appendChild(td3)// a td elemet hozzáadom a tr-hoz
-    td3.innerHTML = adat.evszam// a td3-nek beállítom a szövegét
-//elágazás létrehozása
-    if(adat.esemeny2 && adat.evszam2){
-        td1.rowSpan = 2 // beállítom a rowspan-t
+        const td3 = document.createElement('td')// létrehozok egy td elemet
+        tr.appendChild(td3)// a td elemet hozzáadom a tr-hoz
+        td3.innerHTML = adat.evszam// a td3-nek beállítom a szövegét
+        //elágazás létrehozása
+        if (adat.esemeny2 && adat.evszam2) {
+            td1.rowSpan = 2 // beállítom a rowspan-t
 
-        const tr2 = document.createElement('tr')// létrehozok egy tr elemet
-        tbody.appendChild(tr2)// a tr elemet hozzáadom a tbody-hoz
+            const tr2 = document.createElement('tr')// létrehozok egy tr elemet
+            tbody.appendChild(tr2)// a tr elemet hozzáadom a tbody-hoz
 
-        const td2_2 = document.createElement('td')// létrehozok egy td elemet
-        tr2.appendChild(td2_2)// a td elemet hozzáadom a tr-hoz
-        td2_2.innerHTML = adat.esemeny2// a td2-nek beállítom a szövegét
+            const td2_2 = document.createElement('td')// létrehozok egy td elemet
+            tr2.appendChild(td2_2)// a td elemet hozzáadom a tr-hoz
+            td2_2.innerHTML = adat.esemeny2// a td2-nek beállítom a szövegét
 
-        const td3_2 = document.createElement('td')// létrehozok egy td elemet
-        tr2.appendChild(td3_2)// a td elemet hozzáadom a tr-hoz
-        td3_2.innerHTML = adat.evszam2// a td2-nek beállítom a szövegét
+            const td3_2 = document.createElement('td')// létrehozok egy td elemet
+            tr2.appendChild(td3_2)// a td elemet hozzáadom a tr-hoz
+            td3_2.innerHTML = adat.evszam2// a td2-nek beállítom a szövegét
+        }
     }
 }
-
+rendermenu()//függvény meghívása 
