@@ -111,3 +111,23 @@ function rendermenu() {
     }
 }
 rendermenu()//függvény meghívása 
+
+document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault()//megakadályozza az alapértelmezett eseményt
+    const uralkodo = document.getElementById('uralkodo_nev').value//lekéri az uralkodo mező értékét
+    const esemeny = document.getElementById('esemeny1').value//lekéri az esemeny mező értékét
+    const evszam = document.getElementById('evszam1').value//lekéri az evszam mező értékét
+    const esemeny2 = document.getElementById('esemeny2').value//lekéri az esemeny2 mező értékét
+    const evszam2 = document.getElementById('evszam2').value//lekéri az evszam2 mező értékét
+
+    const ujuralkodo = {
+        uralkodo: uralkodo,//uralkodo változó létrehozása
+        esemeny: esemeny,//esemeny változó létrehozása  
+        evszam: evszam,//evszam változó létrehozása
+        esemeny2: esemeny2,//esemeny2 változó létrehozása
+        evszam2: evszam2//evszam2 változó létrehozása
+    }
+    array.push(ujuralkodo)//ujuralkodo hozzáadása az array-hez
+    tbody.innerHTML = ''//a tbody-t ürítem
+    rendermenu()//függvény meghívása
+})
